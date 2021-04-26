@@ -1,0 +1,136 @@
+<!--
+
+best by test
+
+-->
+
+<html>
+
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .site-header {
+        border-bottom: 1px solid #000000;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #1B6EC2;
+    }
+
+    .topnav a {
+        float: left;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 24px;
+    }
+
+    table {
+        width:75%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    #leaderboard tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    #leaderboard tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    #leaderboard th {
+        background-color: black;
+        color: white;
+    }
+</style>
+
+<div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="statesvote.html">Vote</a>
+    <a href="statesleaderboard.html">Leaderboard</a>
+</div>
+
+<header>
+    <center>
+        <h1 style="font-size:64px;">Leaderboard</h1>
+    </center>
+</header>
+
+<body>
+    <center>
+        <table id="leaderboard">
+            <tr>
+                <th>Rank</th>
+                <th>Item</th>
+                <th>Rating</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Win Ratio</th>
+            </tr>
+        </table>
+    </center>
+    <script>
+        async function update()
+        {
+            data = {db:"States", requestid:1}
+            let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
+            {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data)
+            })
+            var rec = await response.json();
+            console.log(JSON.stringify(rec));
+            var mp = JSON.parse(rec);
+            var scoreboard = document.getElementById("leaderboard");
+            for (i = 0; i < mp.length; i++)
+            {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+                var cell5 = document.createElement("td");
+                cell.innerText = i + 1;
+                cell1.innerText = mp[i]["Name"];
+                cell2.innerText = mp[i]["Rating"];
+                cell3.innerText = mp[i]["Wins"];
+                cell4.innerText = mp[i]["Losses"];
+                var total = (mp[i]["Wins"] + mp[i]["Losses"]);
+                if (total != 0)
+                {
+                    var winrate = Math.round((mp[i]["Wins"] * 1000 + Number.EPSILON)/ total) / 1000;
+                    cell5.innerText = winrate.toFixed(3);
+                }
+                row.appendChild(cell);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                row.appendChild(cell4);
+                row.appendChild(cell5);
+                scoreboard.appendChild(row);
+            }
+        }
+        update();
+    </script>
+</body>
+</html>
+
+<!-- <footer>
+<p>Made by David Hu</p>
+</footer> -->

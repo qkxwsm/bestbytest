@@ -1,0 +1,141 @@
+<!--
+
+best by test
+
+-->
+
+<html>
+
+<style>
+    body {
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .site-header {
+        border-bottom: 1px solid #000000;
+    }
+
+    .topnav {
+        overflow: hidden;
+        background-color: #1B6EC2;
+    }
+
+    .topnav a {
+        float: left;
+        color: #FFFFFF;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 24px;
+    }
+
+    .button {
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 48px;
+        font-family: sans-serif;
+        margin: 4px 2px;
+        cursor: pointer;
+        width: 640px;
+    }
+
+    .button1 {
+        background-color: #1B6EC2;
+    }
+    .button2 {
+        background-color: #1B6EC2;
+    }
+
+    .result {
+        font-size: 32px;
+    }
+
+    .winner {
+        color: green;
+    }
+
+    .loser {
+        color: red;
+    }
+
+</style>
+
+<div class="topnav">
+    <a href="index.html">Home</a>
+    <a href="statesvote.html">Vote</a>
+    <a href="statesleaderboard.html">Leaderboard</a>
+</div>
+
+<header>
+    <center>
+        <h1 style="font-size:112px;">What's better?</h1>
+    </center>
+    <br>
+</header>
+
+<body>
+    <p>
+        <center>
+            <button class="button button1" id="thing1">Start</button>
+            <button class="button button2" id="thing2">Start</button>
+        </center>
+    </p>
+    <br>
+    <div class="w3-container">
+        <center>
+            <span id="winresult" class = "result winner">
+                Press either button above to start.
+            </span>
+            <br>
+            <span id="loseresult" class = "result loser"">
+            </span>
+        </center>
+    </div>
+    <script>
+        async function choose(x, y)
+        {
+            data = {db:"States", winner:x, loser:y, requestid:0}
+            console.log(x + " beat " + y);
+            let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
+            {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data)
+            })
+            var rec = await response.json();
+            console.log(JSON.stringify(rec));
+            var mp = JSON.parse(rec);
+            if (x != "Start")
+            {
+                document.getElementById("winresult").innerText =
+                x + ": " + Math.floor(mp.winner_rtg) + " (+" + mp.winner_delta + ")\n";
+                document.getElementById("loseresult").innerText =
+                y + ": " + Math.floor(mp.loser_rtg) + " (" + mp.loser_delta + ")\n";
+            }
+            var item1 = mp.choice1, item2 = mp.choice2;
+            document.querySelector("#thing1").innerText = item1;
+            document.querySelector("#thing2").innerText = item2;
+        }
+        thing1.onclick = win12;
+        thing2.onclick = win21;
+        function win12()
+        {
+            choose(document.querySelector("#thing1").innerText, document.querySelector("#thing2").innerText);
+        }
+        function win21()
+        {
+            choose(document.querySelector("#thing2").innerText, document.querySelector("#thing1").innerText);
+        }
+    </script>
+</body>
+</html>
+
+<!-- <footer>
+<p>Made by David Hu</p>
+</footer> -->
