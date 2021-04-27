@@ -6,51 +6,53 @@ body {
     font-family: sans-serif;
 }
 
-.site-header {
-    border-bottom: 1px solid #000000;
+form [type=submit] {
+  width: 80%;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size:32px;
 }
 
-.topnav {
-    overflow: hidden;
+.yellow {
+    background-color: #ffff00;
+}
+
+.green {
+    background-color: #008000;
+}
+
+.blue {
     background-color: #1B6EC2;
 }
 
-.topnav a {
-    float: left;
-    color: #FFFFFF;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 24px;
-}
 </style>
 
-<div class="topnav">
-    <a href="index.html">Home</a>
-    <a href="statesvote.html">Vote</a>
-    <a href="statesleaderboard.html">Leaderboard</a>
-</div>
 
 <header>
     <center>
-        <h1 style="font-size:64px;">Welcome to</h1>
-        <h1 style="font-size:160px; color:#1B6EC2;">BestByTest</h1>
+        <h1 style="font-size:96px;">Welcome to BestByTest</h1>
     </center>
-    <br>
 </header>
 
 <body>
     <center>
-        <p style="font-size:24px;">
-            This website uses the <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo rating system</a> to determine what things are the best and worst.
+        <p style="font-size:32px;">
+            This website uses the <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo rating system</a> to determine the best and worst things. What would you like to find out about?
         </p>
+        <form action="statesvote.html">
+            <input type="submit" class = "blue" value="U.S. States" />
+        </form>
+
     </center>
     <br>
-    <div class="w3-container" style="font-size:10px;">
-        <center>
-            Made by David Hu. Special thanks to Brandon Chen and Edward Wan for testing and <a href="https://www.lichess.org/@/coolpant">coolpant</a> on lichess for inspiration; please check out his website at <a href="https://www.bestbytest.net">bestbytest.net</a> as well.
-        </center>
-    </div>
 </body>
+
+<footer style="text-align:center; font-size:8px;">
+    Made by David Hu. Special thanks to Brandon Chen and Edward Wan for testing and <a href="https://www.lichess.org/@/coolpant">coolpant</a> on lichess for inspiration; please check out his website at <a href="https://www.bestbytest.net">bestbytest.net</a> as well.
+</footer>
 
 </html>
