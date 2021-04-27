@@ -35,6 +35,10 @@ th, td {
     text-align: left;
 }
 
+th {
+    cursor: pointer;
+}
+
 #leaderboard tr:nth-child(even) {
     background-color: #eee;
 }
