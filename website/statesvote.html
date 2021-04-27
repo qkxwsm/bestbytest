@@ -24,15 +24,14 @@
 <body>
     <p>
         <center>
-            <button class="button button1" id="thing1">Start</button>
-            <button class="button button1" id="thing2">Start</button>
+            <button class="button button1" id="thing1">Loading</button>
+            <button class="button button1" id="thing2">...</button>
         </center>
     </p>
     <br>
     <div class="w3-container">
         <center>
             <span id="winresult" class = "result winner">
-                Press either button above to start.
             </span>
             <br>
             <span id="loseresult" class = "result loser"">
@@ -53,7 +52,7 @@
             var rec = await response.json();
             console.log(JSON.stringify(rec));
             var mp = JSON.parse(rec);
-            if (x != "Start")
+            if (x != "Loading")
             {
                 document.getElementById("winresult").innerText =
                 x + ": " + Math.floor(mp.winner_rtg) + " (+" + mp.winner_delta + ")\n";
@@ -74,6 +73,7 @@
         {
             choose(document.querySelector("#thing2").innerText, document.querySelector("#thing1").innerText);
         }
+        document.getElementById("thing1").onclick();
     </script>
 </body>
 </html>

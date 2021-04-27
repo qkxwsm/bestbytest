@@ -1,0 +1,11 @@
+test for winning:
+
+{
+  "body": "{\"db\":\"States\", \"winner\":\"Alaska\", \"loser\":\"Alabama\", \"requestid\":0}"
+}
+
+test for leaderboard:
+
+{
+  "body": "{\"db\":\"States\", \"requestid\":1}"
+}
