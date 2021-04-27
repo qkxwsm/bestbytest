@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.site-header {
+    border-bottom: 1px solid #000000;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #1B6EC2;
+}
+
+.topnav a {
+    float: left;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+table {
+    width:75%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+#leaderboard tr:nth-child(even) {
+    background-color: #eee;
+}
+
+#leaderboard tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+#leaderboard th {
+    background-color: black;
+    color: white;
+}
