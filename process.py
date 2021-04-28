@@ -9,13 +9,14 @@ kfactor = decimal.Decimal(20.0)
 default_rtg = decimal.Decimal(1500.0)
 keywords = ["Start", "Loading", "..."]
 
-
 # probability x wins against x + delta
 def prob(delta):
     return decimal.Decimal(1.0 / (1.0 + (math.pow(10.0, float(delta) / (400.0)))))
 
 States = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
 #i think it's probably possible to remove this and instead select from DB, might be a way to attempt to save memory though unsure
+Drinks = ["7UP", "Coke", "Coke Zero", "Crush", "Diet Coke", "Dr. Pepper", "Fanta", "Ginger Ale", "Hi-C", "Icee", "Izze", "Monster Energy", "Mountain Dew", "Pepsi", "Red Bull", "Shirley Temple", "Sierra Mist", "Slurpee", "Sparkling Water", "Sprite", "Sunkist", "Almond Milk", "Apple Juice", "Caprisun", "Coffee", "Cranberry Juice", "Fruit Punch", "Gatorade", "Ginger Tea", "Grape Juice", "Green Tea", "Hot Chocolate", "Kool-Aid", "Lemonade", "Mango Juice", "Milk", "Milk Tea", "Orange Juice", "Pina Colada", "Pineapple Juice", "Powerade", "Root Beer", "Soy Milk", "Tomato Juice", "Water", "Watermelon Juice", "Yakult"]
+Junkfood= ["Almond Joy", "Altoids", "Baby Ruth", "Butterfinger", "Candy Corn", "Ferrero Rocher", "Fruit by the Foot", "Gobstoppers", "Gummy Worms", "Haribo Gold Bears", "Hershey's", "Hershey's Kisses", "Hi-Chew", "Icebreakers", "Jelly Belly", "Jolly Rancher", "Kit Kat", "Lindt", "M&M", "Mars Bar", "Milano Cookie", "Milky Way", "Nerds", "Nestle Crunch", "Nilla Wafer", "Nutella", "Payday", "Pocky", "Reese's Peanut Butter Cups", "Reese's Pieces", "Roshen", "Skittles", "Smarties", "Snickers", "Starbursts", "Swedish Fish", "Three Musketeers", "Toblerone", "Twix", "Werther's Original", "Yanyan", "Bubblegum Ice Cream", "Burnt Caramel Ice Cream", "Butter Pecan Ice Cream", "Cake Batter Ice Cream", "Cookie Dough Ice Cream", "Cookies and Cream Ice Cream", "Dark Chocolate Ice Cream", "Green Tea Ice Cream", "Milk Chocolate Ice Cream", "Mint Chocolate Chip Ice Cream", "Neapolitan Ice Cream", "Pistachio Ice Cream", "Rocky Road Ice Cream", "Strawberry Ice Cream", "Vanilla Ice Cream", "Wasabi Ice Cream", "Cheetos", "Cheez-its", "Doritos", "Fritos", "Goldfish", "Kettle Brand", "Lays Original", "Nutter Butter", "Pita Chips", "Pringles", "Ritz", "Ruffles", "Sun Chips", "Tostitos", "Wheat Thins"]
 
 def response(message, status_code):
     return {
@@ -88,6 +89,10 @@ def lambda_handler(event, context):
         res2 = ""
         if (dbname == "States"):
             res1, res2 = select_items(States)
+        if (dbname == "Drinks"):
+            res1, res2 = select_items(Drinks)
+        if (dbname == "Junkfood"):
+            res1, res2 = select_items(Junkfood)
         if winner in keywords:
             return response(json.dumps({"choice1": res1, "choice2": res2}), 200)
         winner_rtg = get_item(table, winner)['Rating']
