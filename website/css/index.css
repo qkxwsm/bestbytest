@@ -4,18 +4,15 @@ body {
 }
 
 form [type=submit] {
-  width: 80%;
-  color: white;
-  padding: 14px 20px;
-  margin: 20px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size:32px;
-}
-
-input {
+    width: 80%;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
     display: inline;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size:32px;
 }
 
 .yellow {
