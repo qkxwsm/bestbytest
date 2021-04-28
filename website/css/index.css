@@ -14,8 +14,16 @@ form [type=submit] {
   font-size:32px;
 }
 
+input {
+    display: inline;
+}
+
 .yellow {
     background-color: #ffff00;
+}
+
+.crimson {
+    background-color: #DC143C;
 }
 
 .green {

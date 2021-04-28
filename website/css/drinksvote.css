@@ -1,0 +1,53 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.site-header {
+    border-bottom: 1px solid #000000;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #008000;
+}
+
+.topnav a {
+    float: left;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+}
+
+.button {
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    font-family: sans-serif;
+    margin: 4px 2px;
+    cursor: pointer;
+    width: 480px;
+}
+
+.button1 {
+    background-color: #008000;
+}
+
+.result {
+    font-size: 32px;
+}
+
+.winner {
+    color: green;
+}
+
+.loser {
+    color: red;
+}
