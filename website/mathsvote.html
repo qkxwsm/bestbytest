@@ -5,19 +5,19 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/junkfoodvote.css">
+    <link rel="stylesheet" href="css/mathsvote.css">
 </head>
 
 <div class="topnav">
-    <a> <b> Sweets & Snacks </b> </a>
-    <a href="junkfoodvote.html">Vote</a>
-    <a href="junkfoodleaderboard.html">Leaderboard</a>
+    <a> <b> Math Problems </b> </a>
+    <a href="mathsvote.html">Vote</a>
+    <a href="mathsleaderboard.html">Leaderboard</a>
     <a href="index.html">Home</a>
 </div>
 
 <header>
     <center>
-        <h1 style="font-size:96px;">What's better?</h1>
+        <h1 style="font-size:96px;">What's harder?</h1>
     </center>
     <br>
 </header>
@@ -31,7 +31,7 @@
     </p>
     <p>
         <center>
-        <a href="junkfoodvote.html">skip</a>
+        <a href="mathsvote.html">skip</a>
         </center>
     </p>
     <br>
@@ -47,7 +47,7 @@
     <script>
         async function choose(x, y)
         {
-            data = {db:"Junkfood", winner:x, loser:y, requestid:0}
+            data = {db:"Maths", winner:x, loser:y, requestid:0}
             console.log(x + " beat " + y);
             let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
             {
