@@ -33,7 +33,11 @@ body {
     font-family: sans-serif;
     margin: 4px 2px;
     cursor: pointer;
-    width: 480px;
+    width: 360px;
+}
+
+.unsure-button {
+    width: 240px;
 }
 
 .button1 {

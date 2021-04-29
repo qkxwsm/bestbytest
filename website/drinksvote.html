@@ -26,7 +26,9 @@
     <p>
         <center>
             <button class="button button1" id="thing1">Loading</button>
+            <button class="button unsure-button button1" id="unsure">...</button>
             <button class="button button1" id="thing2">...</button>
+            
         </center>
     </p>
     <br>
@@ -35,7 +37,7 @@
             <span id="winresult" class = "result winner">
             </span>
             <br>
-            <span id="loseresult" class = "result loser"">
+            <span id="loseresult" class = "result loser">
             </span>
         </center>
     </div>
@@ -63,9 +65,11 @@
             var item1 = mp.choice1, item2 = mp.choice2;
             document.querySelector("#thing1").innerText = item1;
             document.querySelector("#thing2").innerText = item2;
+            document.querySelector("#unsure").innerText = "Unsure";
         }
         thing1.onclick = win12;
         thing2.onclick = win21;
+        unsure.onclick = noWin;
         function win12()
         {
             choose(document.querySelector("#thing1").innerText, document.querySelector("#thing2").innerText);
@@ -73,6 +77,10 @@
         function win21()
         {
             choose(document.querySelector("#thing2").innerText, document.querySelector("#thing1").innerText);
+        }
+        function noWin()
+        {
+            location.reload();
         }
         document.getElementById("thing1").onclick();
     </script>
