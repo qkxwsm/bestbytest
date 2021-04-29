@@ -75,7 +75,7 @@ th {
 }
 
 #problems tr:nth-child(odd) {
-    background-color: #fff;
+    background-color: #eee;
 }
 
 #problems th {
