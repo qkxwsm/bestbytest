@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="css/nfl.css">
+    <link rel="stylesheet" href="css/hiphop.css">
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/vote.css">
     <link rel="stylesheet" href="css/leaderboard.css">
@@ -21,10 +21,10 @@
 </head>
 
 <div class="topnav">
-    <a> <b> NFL Teams </b> </a>
-    <a href="nflvote.html">Vote</a>
-    <a href="nflleaderboard.html">Leaderboard</a>
-    <a href="index.html">Home</a>
+    <a style="color:#000000"> <b> Hip Hop Artists </b> </a>
+    <a style="color:#000000" href="hiphopvote.html">Vote</a>
+    <a style="color:#000000" href="hiphopleaderboard.html">Leaderboard</a>
+    <a style="color:#000000" href="index.html">Home</a>
 </div>
 
 <header>
@@ -62,7 +62,7 @@
         })));
         async function update()
         {
-            data = {db:"Nfl", requestid:1}
+            data = {db:"Hiphop", requestid:1}
             let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
             {
                 method: 'POST',

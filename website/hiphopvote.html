@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/nfl.css">
+    <link rel="stylesheet" href="css/hiphop.css">
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/vote.css">
     <link rel="stylesheet" href="css/leaderboard.css">
@@ -22,15 +22,15 @@
 </head>
 
 <div class="topnav">
-    <a> <b> NFL Teams </b> </a>
-    <a href="nflvote.html">Vote</a>
-    <a href="nflleaderboard.html">Leaderboard</a>
-    <a href="index.html">Home</a>
+    <a style="color:#000000"> <b> Hip Hop Artists </b> </a>
+    <a style="color:#000000" href="hiphopvote.html">Vote</a>
+    <a style="color:#000000" href="hiphopleaderboard.html">Leaderboard</a>
+    <a style="color:#000000" href="index.html">Home</a>
 </div>
 
 <header>
     <center>
-        <h1 style="font-size:96px;">Who would you root for?</h1>
+        <h1 style="font-size:96px;">Who's better?</h1>
     </center>
     <br>
 </header>
@@ -38,13 +38,13 @@
 <body>
     <p>
         <center>
-            <button class="button button1" id="thing1">Loading</button>
-            <button class="button button1" id="thing2">...</button>
+            <button class="button button1" style="color:#000000" id="thing1">Loading</button>
+            <button class="button button1" style="color:#000000" id="thing2">...</button>
         </center>
     </p>
     <p>
         <center>
-        <a href="nflvote.html">skip</a>
+        <a href="hiphopvote.html">skip</a>
         </center>
     </p>
     <br>
@@ -53,14 +53,14 @@
             <span id="winresult" class = "result winner">
             </span>
             <br>
-            <span id="loseresult" class = "result loser"">
+            <span id="loseresult" class = "result loser">
             </span>
         </center>
     </div>
     <script>
         async function choose(x, y)
         {
-            data = {db:"Nfl", winner:x, loser:y, requestid:0}
+            data = {db:"Hiphop", winner:x, loser:y, requestid:0}
             console.log(x + " beat " + y);
             let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
             {

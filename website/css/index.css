@@ -14,22 +14,31 @@ form [type=submit] {
     background-color: #DC143C;
 }
 
-.green {
-    background-color: #008000;
-}
-
-.blue {
-    background-color: #1B6EC2;
-}
-
-.violet {
-    background-color: #663399;
-}
 
 .orange {
     background-color: #FF7F00;
 }
 
 .yellow {
-    background-color: #ffff00;
+    background-color: #FFFF00;
+}
+
+.green {
+    background-color: #008000;
+}
+
+.lightblue {
+    background-color: #ADD8E6;
+}
+
+.blue {
+    background-color: #1B6EC2;
+}
+
+.lavender {
+    background-color: #E6E6FA;
+}
+
+.violet {
+    background-color: #663399;
 }
