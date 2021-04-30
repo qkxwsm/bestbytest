@@ -1,0 +1,85 @@
+<!--
+1. e4, best by test
+-->
+
+<html>
+
+<head>
+    <link rel="stylesheet" href="css/nflvote.css">
+</head>
+
+<div class="topnav">
+    <a> <b> NFL Teams </b> </a>
+    <a href="nflvote.html">Vote</a>
+    <a href="nflleaderboard.html">Leaderboard</a>
+    <a href="index.html">Home</a>
+</div>
+
+<header>
+    <center>
+        <h1 style="font-size:96px;">Who would you root for?</h1>
+    </center>
+    <br>
+</header>
+
+<body>
+    <p>
+        <center>
+            <button class="button button1" id="thing1">Loading</button>
+            <button class="button button1" id="thing2">...</button>
+        </center>
+    </p>
+    <p>
+        <center>
+        <a href="nflvote.html">skip</a>
+        </center>
+    </p>
+    <br>
+    <div class="w3-container">
+        <center>
+            <span id="winresult" class = "result winner">
+            </span>
+            <br>
+            <span id="loseresult" class = "result loser"">
+            </span>
+        </center>
+    </div>
+    <script>
+        async function choose(x, y)
+        {
+            data = {db:"Nfl", winner:x, loser:y, requestid:0}
+            console.log(x + " beat " + y);
+            let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
+            {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data)
+            })
+            var rec = await response.json();
+            console.log(JSON.stringify(rec));
+            var mp = JSON.parse(rec);
+            if (x != "Loading")
+            {
+                document.getElementById("winresult").innerText =
+                x + ": " + Math.floor(mp.winner_rtg) + " (+" + mp.winner_delta + ")\n";
+                document.getElementById("loseresult").innerText =
+                y + ": " + Math.floor(mp.loser_rtg) + " (" + mp.loser_delta + ")\n";
+            }
+            var item1 = mp.choice1, item2 = mp.choice2;
+            document.querySelector("#thing1").innerText = item1;
+            document.querySelector("#thing2").innerText = item2;
+        }
+        thing1.onclick = win12;
+        thing2.onclick = win21;
+        function win12()
+        {
+            choose(document.querySelector("#thing1").innerText, document.querySelector("#thing2").innerText);
+        }
+        function win21()
+        {
+            choose(document.querySelector("#thing2").innerText, document.querySelector("#thing1").innerText);
+        }
+        document.getElementById("thing1").onclick();
+    </script>
+</body>
+</html>

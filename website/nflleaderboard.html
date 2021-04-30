@@ -1,0 +1,98 @@
+<!--
+1. e4, best by test
+-->
+
+<html>
+<head>
+    <link rel="stylesheet" href="css/nflleaderboard.css">
+</head>
+
+<div class="topnav">
+    <a> <b> NFL Teams </b> </a>
+    <a href="nflvote.html">Vote</a>
+    <a href="nflleaderboard.html">Leaderboard</a>
+    <a href="index.html">Home</a>
+</div>
+
+<header>
+    <center>
+        <h1 style="font-size:64px;">Leaderboard</h1>
+    </center>
+</header>
+
+<body>
+    <center>
+        <table id="leaderboard">
+            <tr>
+                <th>Rank</th>
+                <th>Item</th>
+                <th>Rating</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Total</th>
+                <th>Win Rate</th>
+            </tr>
+        </table>
+    </center>
+    <script>
+        const getCellValue = (tr, idx) => tr.children[idx].innerText || tr.children[idx].textContent;
+        const comparer = (idx, asc) => (a, b) => ((v1, v2) =>
+        v1 !== '' && v2 !== '' && !isNaN(v1) && !isNaN(v2) ? v1 - v2 : v1.toString().localeCompare(v2)
+        )(getCellValue(asc ? a : b, idx), getCellValue(asc ? b : a, idx));
+
+        // do the work...
+        document.querySelectorAll('th').forEach(th => th.addEventListener('click', (() => {
+            const table = th.closest('table');
+            Array.from(table.querySelectorAll('tr:nth-child(n+2)'))
+            .sort(comparer(Array.from(th.parentNode.children).indexOf(th), this.asc = !this.asc))
+            .forEach(tr => table.appendChild(tr) );
+        })));
+        async function update()
+        {
+            data = {db:"Nfl", requestid:1}
+            let response = await fetch('https://gl603e5a32.execute-api.us-west-2.amazonaws.com/prod',
+            {
+                method: 'POST',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify(data)
+            })
+            var rec = await response.json();
+            console.log(JSON.stringify(rec));
+            var mp = JSON.parse(rec);
+            var scoreboard = document.getElementById("leaderboard");
+            for (i = 0; i < mp.length; i++)
+            {
+                var row = document.createElement("tr");
+                var cell = document.createElement("td");
+                var cell1 = document.createElement("td");
+                var cell2 = document.createElement("td");
+                var cell3 = document.createElement("td");
+                var cell4 = document.createElement("td");
+                var cell5 = document.createElement("td");
+                var cell6 = document.createElement("td");
+                cell.innerText = i + 1;
+                cell1.innerText = mp[i]["Name"];
+                cell2.innerText = mp[i]["Rating"];
+                cell3.innerText = mp[i]["Wins"];
+                cell4.innerText = mp[i]["Losses"];
+                var total = (mp[i]["Wins"] + mp[i]["Losses"]);
+                cell5.innerText = total;
+                if (total != 0)
+                {
+                    var winrate = Math.round((mp[i]["Wins"] * 1000 + Number.EPSILON)/ total) / 1000;
+                    cell6.innerText = winrate.toFixed(3);
+                }
+                row.appendChild(cell);
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                row.appendChild(cell4);
+                row.appendChild(cell5);
+                row.appendChild(cell6);
+                scoreboard.appendChild(row);
+            }
+        }
+        update();
+    </script>
+</body>
+</html>

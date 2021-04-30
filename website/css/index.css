@@ -5,7 +5,7 @@ body {
 
 form [type=submit] {
     width: 80%;
-    color: white;
+    color: #ffffff;
     padding: 14px 20px;
     margin: 0;
     display: inline;
@@ -13,10 +13,6 @@ form [type=submit] {
     border-radius: 4px;
     cursor: pointer;
     font-size:32px;
-}
-
-.yellow {
-    background-color: #ffff00;
 }
 
 .crimson {
@@ -33,4 +29,12 @@ form [type=submit] {
 
 .violet {
     background-color: #663399;
+}
+
+.orange {
+    background-color: #FF7F00;
+}
+
+.yellow {
+    background-color: #ffff00;
 }
