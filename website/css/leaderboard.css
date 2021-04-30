@@ -1,11 +1,3 @@
-.topnav {
-    background-color: #663399;
-}
-
-.button1 {
-    background-color: #663399;
-}
-
 table {
     width:75%;
 }
@@ -24,14 +16,15 @@ th {
     cursor: pointer;
 }
 
-#problems tr:nth-child(even) {
+#leaderboard tr:nth-child(even) {
     background-color: #eee;
 }
 
-#problems tr:nth-child(odd) {
-    background-color: #eee;
+#leaderboard tr:nth-child(odd) {
+    background-color: #fff;
 }
 
-#problems th {
-    background-color: white;
+#leaderboard th {
+    background-color: black;
+    color: white;
 }
