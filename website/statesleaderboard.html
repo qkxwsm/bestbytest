@@ -30,6 +30,8 @@
 <header>
     <center>
         <h1 style="font-size:64px;">Leaderboard</h1>
+        <h4 id="total"></h4>
+        
     </center>
 </header>
 
@@ -73,6 +75,7 @@
             console.log(JSON.stringify(rec));
             var mp = JSON.parse(rec);
             var scoreboard = document.getElementById("leaderboard");
+            var totalGames = 0;
             for (i = 0; i < mp.length; i++)
             {
                 var row = document.createElement("tr");
@@ -89,6 +92,7 @@
                 cell3.innerText = mp[i]["Wins"];
                 cell4.innerText = mp[i]["Losses"];
                 var total = (mp[i]["Wins"] + mp[i]["Losses"]);
+                totalGames += total;
                 cell5.innerText = total;
                 if (total != 0)
                 {
@@ -104,6 +108,9 @@
                 row.appendChild(cell6);
                 scoreboard.appendChild(row);
             }
+            var totalNum = document.getElementById("total");
+            totalGames /= 2;
+            totalNum.innerText = "Total Games: " + totalGames;
         }
         update();
     </script>
